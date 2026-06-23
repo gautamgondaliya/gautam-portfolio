@@ -84,6 +84,11 @@ import fastapi from '../app/assets/svg/skills/fastapi.svg'
 import nodeJs from "../app/assets/svg/skills/nodejs.svg"
 import expressJs from "../app/assets/svg/skills/Express.svg"
 import cplus from "../app/assets/svg/skills/cplus.svg";
+import nestjs from "../app/assets/svg/skills/nestjs.svg";
+import redis from "../app/assets/svg/skills/redis.svg";
+import kafka from "../app/assets/svg/skills/kafka.svg";
+import shadcnui from "../app/assets/svg/skills/shadcnui.svg";
+import bullmq from "../app/assets/svg/skills/bullmq.svg";
 
 export const skillsImage = (skill) => {
   const skillID = skill.toLowerCase();
@@ -258,6 +263,16 @@ export const skillsImage = (skill) => {
       return sqlalchemy;
     case 'fastapi':
       return fastapi;
+    case 'nest.js':
+      return nestjs;
+    case 'redis':
+      return redis;
+    case 'kafka':
+      return kafka;
+    case 'shadcnui':
+      return shadcnui;
+    case 'bullmq':
+      return bullmq;
     default:
       break;
   }
