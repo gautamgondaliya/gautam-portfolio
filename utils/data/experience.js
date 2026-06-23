@@ -9,7 +9,7 @@ export const experiences = [
     id: 2,
     title: "Junior Software Developer",
     company: "Param Solutions",
-    duration: "(Jan 2024 - Present)"
+    duration: "(Jan 2024 - May 2025)"
   },
   {
     id: 3,
