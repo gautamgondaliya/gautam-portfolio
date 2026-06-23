@@ -1,8 +1,8 @@
 export const personalData = {
   name: "Gautam Gondaliya",
   profile: '/profile.png',
-  designation: "Software Developer",
-  description: "My name is Gautam Gondaliya, a passionate Full Stack Developer who loves turning ideas into impactful web applications. With a strong grip on the MERN stack, I'm always eager to learn, build, and explore new technologies.I’m self-driven, curious, and enjoy solving real-world problems with clean, efficient code. From building scalable backends to designing interactive UIs, I take pride in delivering quality solutions.JavaScript is at the core of my development journey, and I love working with tools like React, Node.js, MongoDB, and Express. I'm open to exciting opportunities that align with my skills and passion.",
+  designation: "Full Stack Developer & Team Lead of 15 Members",
+  description: "I'm Gautam Gondaliya — a Full Stack Developer with 3+ years of experience building and scaling production systems that serve real users at scale. As a Team Lead managing a team of 15, I've architected platforms handling 200,000+ concurrent users at 99.9% uptime, designed event-driven microservices with Node.js, NestJS, Kafka, and Redis, and shipped products from scratch to live production. I turn complex requirements into clean, performant, and reliable code — from high-throughput backends to polished React and Next.js interfaces. Driven by ownership, performance, and impact, I'm open to roles where I can lead, build, and deliver systems that matter.",
   email: 'gondaliyagautam311@gmail.com',
   phone: '+919723150397',
   address: 'Ahmedabad,Gujarat',

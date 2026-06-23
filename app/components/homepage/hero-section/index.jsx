@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaFacebook, FaTwitterSquare } from "react-icons/fa";
-import { MdDownload } from "react-icons/md";
+import { MdArchitecture, MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
 
@@ -68,6 +68,13 @@ function HeroSection() {
               <span>Get Resume</span>
               <MdDownload size={16} />
             </Link>
+
+            <Link href="https://drive.google.com/file/d/1PEdqrtBVMqdSkVjUUzmbjysvZfo6HX6h/view?usp=sharing" target="_blank" className="bg-gradient-to-r to-pink-500 from-violet-600 p-[1px] rounded-full transition-all duration-300 hover:from-pink-500 hover:to-violet-600">
+              <button className="px-3 text-xs md:px-8 py-3 md:py-4 bg-[#0d1224] rounded-full border-none text-center md:text-sm font-medium uppercase tracking-wider text-[#ffff] no-underline transition-all duration-200 ease-out  md:font-semibold flex items-center gap-1 hover:gap-3">
+                <span>System Design</span>
+                <MdArchitecture size={16} />
+              </button>
+            </Link>
           </div>
 
         </div>
@@ -102,25 +109,29 @@ function HeroSection() {
                 <span className="text-gray-400">{`['`}</span>
                 <span className="text-amber-300">React</span>
                 <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">NodeJS</span>
+                <span className="text-amber-300">Next.js</span>
+                <span className="text-gray-400">{"', '"}</span>
+                <span className="text-amber-300">Node.js</span>
+                <span className="text-gray-400">{"', '"}</span>
+                <span className="text-amber-300">NestJS</span>
                 <span className="text-gray-400">{"', '"}</span>
                 <span className="text-amber-300">Express</span>
                 <span className="text-gray-400">{"', '"}</span>
+                <span className="text-amber-300">PostgreSQL</span>
+                <span className="text-gray-400">{"', '"}</span>
                 <span className="text-amber-300">MongoDB</span>
                 <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Redux</span>
+                <span className="text-amber-300">Redis</span>
                 <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">C++</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">MySql</span>
-                <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">Docker</span>
+                <span className="text-amber-300">Kafka</span>
                 <span className="text-gray-400">{"', '"}</span>
                 <span className="text-amber-300">AWS</span>
                 <span className="text-gray-400">{"', '"}</span>
+                <span className="text-amber-300">Docker</span>
+                <span className="text-gray-400">{"', '"}</span>
                 <span className="text-amber-300">Microservices</span>
                 <span className="text-gray-400">{"', '"}</span>
-                <span className="text-amber-300">jQuery</span>
+                <span className="text-amber-300">C++</span>
 
                 <span className="text-gray-400">{"'],"}</span>
                 
