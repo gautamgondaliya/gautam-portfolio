@@ -3,44 +3,30 @@
 import { useEffect, useState } from "react";
 import { FaArrowUp } from "react-icons/fa6";
 
-const DEFAULT_BTN_CLS =
-  "fixed bottom-8 right-6 z-50 flex items-center rounded-full bg-gradient-to-r from-pink-500 to-violet-600 p-4 hover:text-xl transition-all duration-300 ease-out";
-const SCROLL_THRESHOLD = 50;
+const THRESHOLD = 400;
 
-const ScrollToTop = () => {
-  const [btnCls, setBtnCls] = useState(DEFAULT_BTN_CLS);
-  const [isClient, setIsClient] = useState(false); 
+function ScrollToTop() {
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    setIsClient(true); 
+    const onScroll = () => setVisible(window.scrollY > THRESHOLD);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    if (!isClient) return; 
-
-    const handleScroll = () => {
-      if (window.scrollY > SCROLL_THRESHOLD) {
-        setBtnCls(DEFAULT_BTN_CLS.replace(" hidden", ""));
-      } else {
-        setBtnCls(DEFAULT_BTN_CLS + " hidden");
-      }
-    };
-    
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll, { passive: true });
-    };
-  }, [isClient]); // Re-run when isClient changes
-
-  const onClickBtn = () => window.scrollTo({ top: 0, behavior: "smooth" });
-
-  if (!isClient) return null; // Return nothing if it's not client-side
+  if (!visible) return null;
 
   return (
-    <button className={btnCls} onClick={onClickBtn}>
-      <FaArrowUp />
+    <button
+      type="button"
+      aria-label="Scroll to top"
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      className="fixed bottom-6 right-5 z-40 rounded-full border border-line bg-surface p-3 text-ink shadow-lg transition-colors hover:border-accent hover:text-white"
+    >
+      <FaArrowUp size={14} />
     </button>
   );
-};
+}
 
 export default ScrollToTop;

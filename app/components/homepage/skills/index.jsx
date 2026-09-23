@@ -1,73 +1,65 @@
-// @flow strict
+import { skillGroups } from "@/utils/data/skills";
+import Reveal from "../../helper/reveal";
+import SectionHeading from "../../helper/section-heading";
 
-import { skillsData } from "@/utils/data/skills";
-import { skillsImage } from "@/utils/skill-image";
-import Image from "next/image";
-import Marquee from "react-fast-marquee";
+// Full class names so Tailwind can see them at build time.
+const dot = {
+  cyan: "bg-cyan-400",
+  violet: "bg-violet-400",
+  emerald: "bg-emerald-400",
+  amber: "bg-amber-400",
+  pink: "bg-pink-400",
+  sky: "bg-sky-400",
+};
 
 function Skills() {
+  const [primary, ...rest] = skillGroups;
+
   return (
-    <div id="skills" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
-      <div className="w-[100px] h-[100px] bg-violet-100 rounded-full absolute top-6 left-[42%] translate-x-1/2 filter blur-3xl  opacity-20"></div>
+    <section id="skills" className="section">
+      <SectionHeading
+        number="03"
+        eyebrow="Toolkit"
+        title="Deep on the AI stack, fluent across the whole product."
+        description="Grouped the way I use them. Nothing here is a tutorial-only skill; each has shipped in a project above."
+      />
 
-      <div className="flex justify-center -translate-y-[1px]">
-        <div className="w-3/4">
-          <div className="h-[1px] bg-gradient-to-r from-transparent via-violet-500 to-transparent  w-full" />
-        </div>
-      </div>
+      <div className="grid gap-4 lg:grid-cols-3">
+        <Reveal className="card-featured p-6 sm:p-7 lg:col-span-3">
+          <div className="flex flex-wrap items-baseline justify-between gap-3">
+            <h3 className="flex items-center gap-2 font-display text-lg font-semibold text-white">
+              <span className={`h-2 w-2 rounded-full ${dot[primary.accent]}`} />
+              {primary.name}
+            </h3>
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">Primary focus</p>
+          </div>
+          <ul className="mt-5 flex flex-wrap gap-2">
+            {primary.items.map((item) => (
+              <li key={item} className="chip-strong !px-3 !py-1.5 !text-xs">
+                {item}
+              </li>
+            ))}
+          </ul>
+        </Reveal>
 
-      <div className="flex justify-center my-5 lg:py-8">
-        <div className="flex  items-center">
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
-          <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
-            Skills
-          </span>
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
-        </div>
+        {rest.map((group, i) => (
+          <Reveal key={group.id} delay={i * 60} className="card card-hover p-6">
+            <h3 className="flex items-center gap-2 text-sm font-semibold text-white">
+              <span className={`h-2 w-2 rounded-full ${dot[group.accent] ?? "bg-accent"}`} />
+              {group.name}
+            </h3>
+            <ul className="mt-4 flex flex-wrap gap-1.5">
+              {group.items.map((item) => (
+                <li key={item} className="chip">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        ))}
       </div>
-
-      <div className="w-full my-12">
-        <Marquee
-          gradient={false}
-          speed={80}
-          pauseOnHover={true}
-          pauseOnClick={true}
-          delay={0}
-          play={true}
-          direction="left"
-        >
-          {skillsData.map((skill, id) => (
-            <div className="w-36 min-w-fit h-fit flex flex-col items-center justify-center transition-all duration-500 m-3 sm:m-5 rounded-lg group relative hover:scale-[1.15] cursor-pointer"
-              key={id}>
-              <div className="h-full w-full rounded-lg border border-[#1f223c] bg-[#11152c] shadow-none shadow-gray-50 group-hover:border-violet-500 transition-all duration-500">
-                <div className="flex -translate-y-[1px] justify-center">
-                  <div className="w-3/4">
-                    <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-violet-500 to-transparent" />
-                  </div>
-                </div>
-                <div className="flex flex-col items-center justify-center gap-3 p-6">
-                  {skillsImage(skill)?.src && (
-                    <div className="h-8 sm:h-10">
-                      <Image
-                        src={skillsImage(skill).src}
-                        alt={skill}
-                        width={40}
-                        height={40}
-                        className="h-full w-auto rounded-lg"
-                      />
-                    </div>
-                  )}
-                  <p className="text-white text-sm sm:text-lg">
-                    {skill}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </Marquee>
-      </div>
-    </div>
+    </section>
   );
-};
+}
 
 export default Skills;

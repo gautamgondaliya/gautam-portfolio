@@ -1,52 +1,203 @@
+// Source of truth: resume (Sep 2026). Every claim here is on the resume.
+// `code` is empty where the repository is private. Add the URL when it goes public.
+// `visual`: "image" renders `image` in a browser frame; "agent-graph" renders the SVG graph.
+
 export const projectsData = [
-    {
-        id: 1,
-        name: 'BizzCommSync App',
-        description: "Built BizzCommsync, a client management platform using React.js, Node.js, Express.js, and MongoDB. Integrated AWS EC2, S3 for hosting and storage, real-time messaging with Twilio, and CSV uploads with Multer. Automated deployments with AWS CodePipeline and Jenkins. Designed a scalable microservices architecture with Docker and added advanced analytics for client insights.",
-        tools: ['Express', 'MongoDB', 'ReactJs', 'Material-UI', 'REST APIs', 'Twilio (OTP)', 'Multer','NodeJs', 'AWS S3', 'Node Mailer','EC2',],
-        role: 'Backend Developer',
-        code: '',
-        demo: '',
-    },
-    {
-        id: 2,
-        name: 'Pay-Per-View Boxing League',
-        description: 'Architected an end-to-end global Pay-Per-View boxing livestream platform with secure stream access and real-time ticket purchases. Built a scalable microservices architecture (12+ services) on AWS with Application Load Balancer and Auto Scaling Groups (3→20 instances) to absorb live-event traffic spikes. The livestreaming pipeline ingests RTMP, encodes via AWS IVS, secures with AES-128 HLS, and distributes through CloudFront/Akamai — scaling to 200,000+ concurrent viewers at 99.9% availability. Integrated Stripe with IP-based currency localization across 20+ currencies, processing 7,000+ webhook events through Kafka with PCI compliance and zero data vulnerabilities. Validated with k6 load tests at 200k concurrent users (p95 ~340ms) and monitored via Prometheus/Grafana dashboards tracking 50+ infra and app metrics.',
-        tools: ['ReactJs', 'NodeJs', 'AWS IVS', 'Kafka', 'Redis', 'Stripe', 'CloudFront', 'AWS ALB', 'Auto Scaling', 'Prometheus', 'Grafana', 'k6', 'HLS', 'RTMP', 'Microservices'],
-        role: 'Team Lead & Full Stack Developer',
-        code: '',
-        demo: 'https://allstarinfluencers.com/',
-    },
-    {
-        id: 3,
-        name: 'Social Gaming Platform',
-        description: 'Built scalable backend microservices for a sweepstakes-based social gaming platform supporting virtual currency and real-time user engagement. Implemented real-time chat and notification infrastructure over WebSockets, and constructed a rakeback and wagering tracking engine that dynamically computes user rewards from gameplay activity. Transactional services built with NestJS and PostgreSQL, with throughput boosted via Redis caching and pub/sub. Integrated Sumsub KYC for automated, secure identity onboarding. Containerized services with Docker, deployed on AWS, and collaborated with Next.js frontend teams to deliver real-time APIs and interactive features.',
-        tools: ['Nextjs', 'NestJs', 'PostgreSQL', 'Redis', 'WebSockets', 'Docker', 'AWS', 'Sumsub KYC', 'Microservices', 'Pub/Sub'],
-        code: '',
-        role: 'Team Lead & Full Stack Developer',
-        demo: 'https://winwinsweeps.com/',
-    },
-    {
-        id: 4,
-        name: 'Wulf Casino',
-        description: "Built an online casino platform from scratch to production — currently live in the US. Engineered the full bonus engine including rakeback, cashback, and instant rebate logic. Integrated dual KYC identity verification via Sumsub and Seon for secure onboarding and fraud prevention, plus payment processing through Coinflow and Breeze. Deployed on AWS with auto-scaling and load balancing for traffic spikes, Redis for caching, and a CDN for fast global content delivery, alongside geo-blocking for regulatory compliance. Beta launch completed and load-tested with 1,000+ concurrent users.",
-        tools: ['NestJs','NextJs', 'AWS', 'Auto Scaling', 'Load Balancing', 'Redis', 'CDN', 'Sumsub', 'Seon', 'Coinflow', 'Breeze', 'Geo-blocking', 'Microservices'],
-        code: '',
-        demo: 'https://www.wulfcasino.com/en',
-        role: 'Team Lead & Full Stack Developer',
-    }
+  {
+    id: 1,
+    slug: "software-team-gpt",
+    name: "Software Team GPT",
+    subtitle: "AI Multi-Agent Software Team",
+    tagline: "One prompt in. A tested, reviewed, downloadable codebase out.",
+    type: "personal",
+    featured: true,
+    period: "2026",
+    role: "Solo builder: agent graph, backend, frontend, infra",
+    visual: "agent-graph",
+    image: "",
+    problem:
+      "Turning a one-line product idea into a working codebase normally takes a team days. I wanted an agent system that does it end to end, with a human approving each stage and every line of generated code tested before it ships.",
+    decisions: [
+      {
+        title: "Ten specialised agents, one graph",
+        why: "PM, Architect, Backend, Frontend, QA, Security, DevOps, Reviewer and more, each with a narrow job, orchestrated in LangGraph.",
+      },
+      {
+        title: "interrupt() + Postgres checkpointer",
+        why: "Human-in-the-loop approval gates. Long-running runs survive restarts and resume from any point.",
+      },
+      {
+        title: "Reviewer scores as structured data",
+        why: "A failing score triggers a targeted re-run of only the failing agent, not the whole pipeline.",
+      },
+      {
+        title: "Sandbox before anything ships",
+        why: "Generated code and tests execute in isolated, non-root, network-disabled Docker containers with resource limits.",
+      },
+      {
+        title: "Retrieval hardened against injection",
+        why: "RAG over uploaded PDFs, ZIPs and URLs with Gemini embeddings + pgvector. Retrieved content is guarded against prompt injection. Mem0 keeps cross-project memory.",
+      },
+    ],
+    highlights: [
+      "Shipped to production on Fly.io, Vercel, Neon and Upstash with Clerk authentication.",
+      "~23 rate-limited FastAPI endpoints with real-time SSE streaming to the Next.js client.",
+      "Langfuse tracing on every run and a golden-set evaluation harness to catch regressions.",
+    ],
+    pipeline: [
+      "Prompt",
+      "PM · Architect",
+      "Backend · Frontend · DevOps",
+      "Sandbox tests",
+      "QA · Security · Reviewer",
+      "Human approval",
+      "codebase.zip",
+    ],
+    stack: [
+      "LangGraph",
+      "LangChain",
+      "FastAPI",
+      "Next.js",
+      "Google Gemini",
+      "PostgreSQL / pgvector",
+      "Mem0",
+      "Docker",
+      "Langfuse",
+      "Clerk",
+      "Fly.io",
+      "Vercel",
+    ],
+    metrics: [
+      { value: "10", label: "specialised agents" },
+      { value: "~23", label: "rate-limited endpoints" },
+      { value: "0", label: "network access in sandbox" },
+    ],
+    demo: "https://ai-multi-agent-umber.vercel.app/",
+    code: "",
+  },
+  {
+    id: 2,
+    slug: "recap",
+    name: "Recap",
+    subtitle: "AI Meeting Recorder & Intelligence Platform",
+    tagline: "Meetings end. Your team's memory doesn't.",
+    type: "personal",
+    featured: true,
+    period: "2026",
+    role: "Solo builder: AI pipeline, backend, frontend, infra",
+    visual: "image",
+    image: "/projects/recap.webp",
+    problem:
+      "Meeting notes get lost and decisions get contradicted weeks later. Recap sends a bot into the call, transcribes and summarises it, then lets the whole workspace ask questions across its entire meeting history.",
+    decisions: [
+      {
+        title: "Bot-based capture, four services, one monorepo",
+        why: "A Playwright bot joins Google Meet and records. Web, API, bot and AI pipeline live in a Turborepo monorepo.",
+      },
+      {
+        title: "Hybrid retrieval, not vector-only",
+        why: "pgvector embeddings + PostgreSQL full-text search power a streaming chat assistant that answers with cited timestamps.",
+      },
+      {
+        title: "Two-pass transcription",
+        why: "Audio is chunked mid-call and streamed to the browser over WebSocket for near-live text, then a final full-accuracy pass runs.",
+      },
+      {
+        title: "Idempotent AI pipeline",
+        why: "Whisper/Gemini transcription, speaker diarization and LLM summaries, decisions and action items, with automatic safe reprocessing.",
+      },
+      {
+        title: "Persistent organisational memory",
+        why: "Org-wide decision tracking with contradiction detection and a cross-meeting entity graph.",
+      },
+    ],
+    highlights: [
+      "Multi-tenant backend with NestJS + Prisma, JWT/refresh-token auth, Google OAuth and role-based access.",
+      "Next.js frontend with real-time Socket.IO updates as transcripts and summaries land.",
+    ],
+    pipeline: [
+      "Bot joins Meet",
+      "Audio chunks → WebSocket",
+      "Whisper / Gemini + diarization",
+      "Summary · decisions · actions",
+      "pgvector + FTS index",
+      "Chat with cited timestamps",
+    ],
+    stack: [
+      "Next.js",
+      "NestJS",
+      "Prisma",
+      "Python",
+      "PostgreSQL / pgvector",
+      "Playwright",
+      "Google Gemini",
+      "Whisper",
+      "Socket.IO",
+      "Turborepo",
+      "Fly.io",
+    ],
+    metrics: [
+      { value: "4", label: "services, one monorepo" },
+      { value: "Hybrid", label: "vector + full-text" },
+      { value: "Live", label: "mid-call transcripts" },
+    ],
+    demo: "https://recap-web.fly.dev/",
+    code: "",
+  },
+  {
+    id: 3,
+    slug: "ppv-boxing-livestream",
+    name: "Pay-Per-View Boxing League",
+    subtitle: "Livestream & ticketing platform",
+    tagline: "Built for the moment 200,000 people press play at once.",
+    type: "work",
+    featured: false,
+    company: "SDLC Corp",
+    period: "2025",
+    role: "Led architecture, backend and streaming pipeline",
+    headline: { value: "200K+", label: "concurrent viewers at 99.9% availability" },
+    highlights: [
+      "12+ services on AWS, auto-scaling 3 → 20 instances for live-event spikes.",
+      "Stripe payments with Kafka-driven, idempotent webhook processing across 20+ currencies.",
+      "k6 load tests at 200k simulated users (~340ms p95); Prometheus/Grafana observability across the stack.",
+    ],
+    pipeline: ["RTMP ingest", "AWS IVS", "AES-128 HLS", "CDN", "Viewer"],
+    stack: ["React", "Node.js", "AWS IVS", "Kafka", "Stripe", "Redis", "k6", "Prometheus", "Grafana"],
+    metrics: [
+      { value: "3 → 20", label: "instances, auto-scaled" },
+      { value: "~340ms", label: "p95 at 200k load" },
+      { value: "20+", label: "currencies" },
+    ],
+    demo: "",
+    code: "",
+  },
+  {
+    id: 4,
+    slug: "social-gaming-platform",
+    name: "Social Gaming Platform",
+    subtitle: "Real-time backend for a live sweepstakes product",
+    tagline: "Chat, notifications and reward maths that stay consistent under constant load.",
+    type: "work",
+    featured: false,
+    company: "SDLC Corp",
+    period: "2025 – Present",
+    role: "Backend and real-time systems",
+    headline: { value: "6,000+", label: "daily active users in production" },
+    highlights: [
+      "Real-time chat and notifications over Redis pub/sub with NestJS and PostgreSQL.",
+      "Rakeback and wagering-reward engine computing user rewards from gameplay activity.",
+      "Sumsub KYC for automated identity verification; containerised and deployed on AWS.",
+    ],
+    pipeline: ["Next.js client", "NestJS API", "Redis pub/sub", "PostgreSQL", "Sumsub KYC"],
+    stack: ["Next.js", "NestJS", "PostgreSQL", "Redis", "Sumsub KYC", "Docker", "AWS"],
+    metrics: [
+      { value: "6,000+", label: "daily active users" },
+      { value: "Live", label: "in production" },
+    ],
+    demo: "https://wulfcasino.com/en",
+    code: "",
+  },
 ];
 
-
-// Do not remove any property.
-// Leave it blank instead as shown below
-
-// {
-//     id: 1,
-//     name: '',
-//     description: "",
-//     tools: [],
-//     role: '',
-//     code: '',
-//     demo: '',
-// },
+export const featuredProjects = projectsData.filter((p) => p.featured);
+export const workProjects = projectsData.filter((p) => p.type === "work");

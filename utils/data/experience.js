@@ -1,20 +1,43 @@
 export const experiences = [
   {
     id: 1,
-    title: 'Full Stack Developer',
-    company: "Sdlc Corp",
-    duration: "(Jun 2025 - Present)"
+    title: "Software Developer",
+    company: "SDLC Corp",
+    location: "Noida, NCR",
+    period: "Jun 2025 – Present",
+    current: true,
+    impact: { value: "200K+", label: "concurrent viewers · 99.9% availability" },
+    bullets: [
+      "Led architecture of a global pay-per-view boxing livestream platform (12+ AWS services) that auto-scales 3 → 20 instances to serve 200,000+ concurrent viewers at 99.9% availability.",
+      "Built the streaming pipeline (RTMP → AWS IVS → AES-128 HLS → CDN) and Stripe payments with Kafka-driven, idempotent webhook processing across 20+ currencies.",
+      "Load-tested at 200k simulated concurrent users with k6 (~340ms p95) and added Prometheus/Grafana observability across the stack.",
+      "Building real-time chat, notifications and a rakeback/wagering-reward engine for a sweepstakes gaming platform with 6,000+ daily active users; integrated Sumsub KYC.",
+    ],
+    stack: ["React", "Next.js", "Node.js", "NestJS", "PostgreSQL", "Redis", "Kafka", "AWS", "Stripe", "k6"],
   },
   {
     id: 2,
     title: "Junior Software Developer",
     company: "Param Solutions",
-    duration: "(Jan 2024 - May 2025)"
+    location: "Ahmedabad, Gujarat",
+    period: "Jan 2024 – May 2025",
+    current: false,
+    impact: { value: "Full lifecycle", label: "build → deploy → monitor" },
+    bullets: [
+      "Led development of enterprise backend applications (React, Node.js, Express, AWS, Docker), owning the full lifecycle from build through deployment and monitoring.",
+      "Implemented CI/CD pipelines with AWS, Docker and Jenkins; ran load, integration and end-to-end testing.",
+    ],
+    stack: ["React", "Node.js", "Express", "MongoDB", "AWS", "Docker", "Jenkins"],
   },
   {
     id: 3,
-      title: "Software Developer (Intern)",
+    title: "Software Developer Intern",
     company: "Param Solutions",
-    duration: "(July 2023 - Dec 2023)"
-  }
-]
+    location: "Ahmedabad, Gujarat",
+    period: "Jul 2023 – Dec 2023",
+    current: false,
+    impact: null,
+    bullets: ["Built scalable web applications on the MERN stack."],
+    stack: ["MongoDB", "Express", "React", "Node.js"],
+  },
+];

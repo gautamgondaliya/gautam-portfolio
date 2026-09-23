@@ -1,76 +1,63 @@
-"use client";
-
-
-// @flow strict
-import { personalData } from '@/utils/data/personal-data';
-import Link from 'next/link';
-import { BiLogoLinkedin } from "react-icons/bi";
-import { CiLocationOn } from "react-icons/ci";
-import { FaFacebook, FaStackOverflow } from 'react-icons/fa';
-import { FaXTwitter } from "react-icons/fa6";
-import { IoLogoGithub, IoMdCall } from "react-icons/io";
-import { MdAlternateEmail } from "react-icons/md";
-import ContactForm from './contact-form';
+import { personalData } from "@/utils/data/personal-data";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
+import { HiOutlineLocationMarker, HiOutlineMail, HiOutlinePhone } from "react-icons/hi";
+import { SiLeetcode } from "react-icons/si";
+import Reveal from "../../helper/reveal";
+import ContactForm from "./contact-form";
 
 function ContactSection() {
   return (
-    <div id="contact" className="my-12 lg:my-16 relative mt-24 text-white">
-      <div className="hidden lg:flex flex-col items-center absolute top-24 -right-8">
-        <span className="bg-[#1a1443] w-fit text-white rotate-90 p-2 px-5 text-xl rounded-md">
-          CONTACT
-        </span>
-        <span className="h-36 w-[2px] bg-[#1a1443]"></span>
-      </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-        <ContactForm />
-        <div className="lg:w-3/4 ">
-          <div className="flex flex-col gap-5 lg:gap-9">
-            <p className="text-sm md:text-xl flex items-center gap-3">
-              <MdAlternateEmail
-                className="bg-[#8b98a5] p-2 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={36}
-              />
-              <span>{personalData.email}</span>
+    <section id="contact" className="section">
+      <Reveal className="card-featured overflow-hidden">
+        <div className="grid gap-10 p-6 sm:p-10 lg:grid-cols-[1fr_1.15fr] lg:gap-16 lg:p-14">
+          <div className="min-w-0">
+            <p className="eyebrow flex items-center gap-3">
+              <span className="text-muted">07</span>
+              <span className="h-px w-6 bg-accent/60" />
+              Contact
             </p>
-            <p className="text-sm md:text-xl flex items-center gap-3">
-              <IoMdCall
-                className="bg-[#8b98a5] p-2 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={36}
-              />
-              <span>
-                {personalData.phone}
-              </span>
+            <h2 className="mt-4 font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              Hiring for AI engineering?
+              <br />
+              <span className="text-muted">Let&apos;s talk.</span>
+            </h2>
+            <p className="mt-5 max-w-md text-muted">
+              Open to Full Stack AI Engineer roles and hard agent or retrieval problems. I reply within a day.
             </p>
-            <p className="text-sm md:text-xl flex items-center gap-3">
-              <CiLocationOn
-                className="bg-[#8b98a5] p-2 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={36}
-              />
-              <span>
-                {personalData.address}
-              </span>
-            </p>
+
+            <div className="mt-8 space-y-4">
+              <a href={`mailto:${personalData.email}`} className="flex items-center gap-3 text-ink/90 hover:text-white">
+                <HiOutlineMail className="text-accent" size={20} />
+                <span>{personalData.email}</span>
+              </a>
+              <a href={`tel:${personalData.phoneHref}`} className="flex items-center gap-3 text-ink/90 hover:text-white">
+                <HiOutlinePhone className="text-accent" size={20} />
+                <span>{personalData.phone}</span>
+              </a>
+              <p className="flex items-center gap-3 text-ink/90">
+                <HiOutlineLocationMarker className="text-accent" size={20} />
+                <span>{personalData.location}</span>
+              </p>
+            </div>
+
+            <div className="mt-8 flex items-center gap-5">
+              <a href={personalData.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="link-muted">
+                <BsGithub size={22} />
+              </a>
+              <a href={personalData.linkedIn} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="link-muted">
+                <BsLinkedin size={22} />
+              </a>
+              <a href={personalData.leetcode} target="_blank" rel="noopener noreferrer" aria-label="LeetCode" className="link-muted">
+                <SiLeetcode size={22} />
+              </a>
+            </div>
           </div>
-          <div className="mt-8 lg:mt-16 flex items-center gap-5 lg:gap-10">
-            <Link target="_blank" href={personalData.github}>
-              <IoLogoGithub
-                className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={48}
-              />
-            </Link>
-            <Link target="_blank" href={personalData.linkedIn}>
-              <BiLogoLinkedin
-                className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={48}
-              />
-            </Link>
-            
-            
-          </div>
+
+          <ContactForm />
         </div>
-      </div>
-    </div>
+      </Reveal>
+    </section>
   );
-};
+}
 
 export default ContactSection;

@@ -1,20 +1,20 @@
 export const educations = [
   {
     id: 1,
-    title: "Bachelor of Engineering",
-    duration: "2021 - 2025",
-    institution: "L.D Collage of Engineering (Ahmedabad)",
+    degree: "Bachelor of Engineering",
+    field: "Electronics and Communication Engineering",
+    institution: "L.D. College of Engineering",
+    location: "Ahmedabad, Gujarat",
+    period: "2021 – 2025",
+    score: "CGPA 8.29 / 10",
   },
   {
     id: 2,
-    title: "Higher Secondary Certificate",
-    duration: "2020 - 2021",
+    degree: "Higher Secondary (GSEB)",
+    field: "Science",
     institution: "Hari Om School of Science",
+    location: "Surat, Gujarat",
+    period: "2020 – 2021",
+    score: "80.61%",
   },
-  {
-    id: 3,
-    title: "Secondary School Certificate",
-    duration: "2018 - 2019",
-    institution: "L.P.D Patel High School",
-  }
-]
+];

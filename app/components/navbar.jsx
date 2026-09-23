@@ -1,41 +1,95 @@
-// @flow strict
-import Link from "next/link";
+"use client";
 
+import { personalData } from "@/utils/data/personal-data";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { MdOutlineFileDownload } from "react-icons/md";
+
+const links = [
+  { id: "projects", label: "Projects" },
+  { id: "skills", label: "Skills" },
+  { id: "experience", label: "Experience" },
+  { id: "about", label: "About" },
+  { id: "contact", label: "Contact" },
+];
 
 function Navbar() {
-  return (
-    <nav className="bg-transparent">
-      <div className="flex items-center justify-between py-5">
-        <div className="flex flex-shrink-0 items-center">
-          <Link
-            href="/"
-            className=" text-[#16f2b3] text-3xl font-bold">
-            GAUTAM
-          </Link>
-        </div>
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
 
-        <ul className="mt-4 flex h-screen max-h-0 w-full flex-col items-start text-sm opacity-0 md:mt-0 md:h-auto md:max-h-screen md:w-auto md:flex-row md:space-x-1 md:border-0 md:opacity-100" id="navbar-default">
-          <li>
-            <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/#about">
-              <div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">ABOUT</div>
-            </Link>
-          </li>
-          <li>
-            <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/#experience"><div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">EXPERIENCE</div></Link>
-          </li>
-          <li>
-            <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/#skills"><div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">SKILLS</div></Link>
-          </li>
-          <li>
-            <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/#education"><div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">EDUCATION</div></Link>
-          </li>
-          <li>
-            <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/#projects"><div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">PROJECTS</div></Link>
+  useEffect(() => {
+    const sections = links.map((l) => document.getElementById(l.id)).filter(Boolean);
+    if (!sections.length || !("IntersectionObserver" in window)) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) setActive(visible[0].target.id);
+      },
+      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.2, 0.5] }
+    );
+    sections.forEach((s) => io.observe(s));
+    return () => io.disconnect();
+  }, []);
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-line/60 bg-bg/75 backdrop-blur-md">
+      <nav className="container-x flex h-16 items-center justify-between">
+        <Link href="/" className="font-mono text-sm font-semibold tracking-tight text-white">
+          <span className="text-accent">~/</span>gautam
+        </Link>
+
+        <ul className="hidden items-center gap-1 md:flex">
+          {links.map((l) => (
+            <li key={l.id}>
+              <Link
+                href={`/#${l.id}`}
+                className={`rounded-md px-3 py-2 text-sm transition-colors ${
+                  active === l.id ? "text-white" : "text-muted hover:text-white"
+                }`}
+              >
+                {l.label}
+              </Link>
+            </li>
+          ))}
+          <li className="ml-3">
+            <a href={personalData.resume} target="_blank" rel="noopener noreferrer" className="btn-ghost !px-4 !py-2">
+              Resume <MdOutlineFileDownload size={16} />
+            </a>
           </li>
         </ul>
-      </div>
-    </nav>
+
+        <button
+          type="button"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+          className="rounded-md p-2 text-ink md:hidden"
+        >
+          {open ? <HiX size={22} /> : <HiMenuAlt3 size={22} />}
+        </button>
+      </nav>
+
+      {open ? (
+        <div className="border-t border-line bg-bg md:hidden">
+          <ul className="container-x flex flex-col py-2">
+            {links.map((l) => (
+              <li key={l.id}>
+                <Link href={`/#${l.id}`} onClick={() => setOpen(false)} className="block px-2 py-3 text-sm text-ink">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+            <li className="px-2 py-3">
+              <a href={personalData.resume} target="_blank" rel="noopener noreferrer" className="btn-ghost w-full">
+                Resume <MdOutlineFileDownload size={16} />
+              </a>
+            </li>
+          </ul>
+        </div>
+      ) : null}
+    </header>
   );
-};
+}
 
 export default Navbar;

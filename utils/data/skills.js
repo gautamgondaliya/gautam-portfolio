@@ -1,113 +1,81 @@
-export const skillsData = [
-  'HTML',
-  'CSS',
-  'Javascript',
-  'React',
-  'Next JS',
-  'Nest.js',
-  'BullMq',
-  'Redis',
-  'Nodejs',
-  'C++',
-  'Expressjs',
-  'Tailwind',
-  'MongoDB',
-  'MySQL',
-  'PostgreSQL',
-  'Git',
-  'AWS',
-  'Kafka',
-  'Bootstrap',
-  'Docker',
-  'Figma',
-  'Firebase',
-  'MaterialUI',
-  'ShadcnUI'
-]
+// Grouped the same way as the resume so recruiters can scan in seconds.
+// `accent` is a Tailwind colour token used for the group marker.
 
-// Choose your skills from below. Make sure it's in the same format and spelled correctly.
-// Couldn't find the required skills? Raise an issue on github at https://github.com/hhhrrrttt222111/developer-portfolio/issues/new
-
-
-// AVAILABLE SKILLS
-
-/* 
-  HTML
-  CSS
-  JS 
-  React
-  Next JS
-  Nuxt JS
-  Node JS
-  Vue
-  Angular
-  Docker
-  Photoshop
-  Illustrator
-  Svelte
-  GCP
-  Azure
-  Fastify
-  Haxe
-  Ionic
-  Markdown
-  Microsoft Office
-  Picsart
-  Sketch
-  Unity
-  WolframAlpha
-  Adobe XD
-  After Effects
-  Bootstrap
-  Bulma
-  CapacitorJs
-  Coffeescript
-  MemSQL
-  C
-  C++
-  C#
-  Python
-  Java
-  Julia
-  Matlab
-  Swift
-  Ruby
-  Kotlin
-  Go
-  PHP
-  Flutter
-  Dart
-  Typescript
-  Swift
-  Git
-  Figma
-  Canva
-  Ubuntu
-  Bootstrap
-  MongoDB
-  Tailwind
-  ViteJS
-  VuetifyJS
-  MySQL
-  PostgreSQL
-  AWS
-  Firebase
-  Blender
-  Premiere Pro
-  Adobe Audition
-  Deno
-  Django
-  Gimp
-  Graphql
-  Lightroom
-  MaterialUI
-  Nginx
-  Numpy
-  OpenCV
-  Pytorch
-  Selenium
-  Strapi
-  Tensorflow
-  Webex
-  Wordpress
-*/
+export const skillGroups = [
+  {
+    id: "ai",
+    name: "AI & LLM Engineering",
+    accent: "cyan",
+    items: [
+      "LangGraph",
+      "LangChain",
+      "RAG",
+      "Vector Search (pgvector)",
+      "Multi-Agent Orchestration",
+      "Prompt Engineering",
+      "Google Gemini",
+      "Whisper",
+      "Mem0",
+      "Langfuse",
+      "LLM Evaluation",
+    ],
+  },
+  {
+    id: "lang",
+    name: "Languages & Frameworks",
+    accent: "violet",
+    items: [
+      "TypeScript",
+      "JavaScript",
+      "Python",
+      "React",
+      "Next.js",
+      "Node.js",
+      "NestJS",
+      "FastAPI",
+    ],
+  },
+  {
+    id: "data",
+    name: "Data & Infrastructure",
+    accent: "emerald",
+    items: [
+      "PostgreSQL",
+      "Redis",
+      "MongoDB",
+      "Docker",
+      "AWS",
+      "Kafka",
+      "WebSockets",
+      "Socket.IO",
+    ],
+  },
+  {
+    id: "test",
+    name: "Testing & CI/CD",
+    accent: "amber",
+    items: ["Jest", "Pytest", "Playwright", "GitHub Actions", "k6 Load Testing"],
+  },
+  {
+    id: "platform",
+    name: "Platforms & Tooling",
+    accent: "pink",
+    items: [
+      "Vercel",
+      "Fly.io",
+      "Neon",
+      "Upstash",
+      "Clerk",
+      "Stripe",
+      "Prometheus / Grafana",
+      "Turborepo",
+      "Git",
+    ],
+  },
+  {
+    id: "core",
+    name: "Core",
+    accent: "sky",
+    items: ["Distributed Systems", "System Design", "Monorepo Architecture", "DSA"],
+  },
+];
