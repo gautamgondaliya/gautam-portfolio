@@ -16,7 +16,7 @@ export const personalData = {
   linkedIn: "https://www.linkedin.com/in/gondaliyagautam/",
   leetcode: "https://leetcode.com/u/gautam_311/",
   resume:
-    "https://drive.google.com/file/d/1R1dY3CmBJbwZ5T7o-F-4dedAqoWDGZgX/view?usp=sharing",
+    "https://drive.google.com/file/d/1CLr27oF8UM91sTnvqe9_UbZdtUSSeNHn/view?usp=sharing",
   systemDesign:
     "https://drive.google.com/file/d/1PEdqrtBVMqdSkVjUUzmbjysvZfo6HX6h/view?usp=sharing",
   siteUrl: "https://gautamgondaliya3.netlify.app",
